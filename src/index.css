@@ -1,144 +1,113 @@
-/* ===== Reset and Base Styles ===== */
+/* ===== Base Styles ===== */
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: #333;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 40px;
-}
-
-/* ===== To-Do List Container ===== */
-.to-do-list {
-  background: #fff;
-  padding: 30px 40px;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  width: 420px;
-  max-width: 90%;
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-.to-do-list h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 2rem;
-  color: #444;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-/* ===== Input & Add Button ===== */
-.to-do-list input[type="text"] {
-  width: 70%;
-  padding: 12px 15px;
-  font-size: 15px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  outline: none;
-  transition: all 0.3s;
-}
-
-.to-do-list input[type="text"]:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
-}
-
-.add-button {
-  margin-left: 10px;
-  padding: 12px 18px;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.add-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
-}
-
-/* ===== Task List ===== */
-.to-do-list ol {
-  margin-top: 20px;
-  padding: 0;
-  list-style: none;
-}
-
-.to-do-list li {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #f9f9ff;
-  padding: 12px 16px;
-  margin-bottom: 12px;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s, background 0.3s;
+  background: linear-gradient(135deg, #f6d365, #fda085, #a18cd1, #fbc2eb);
+  background-size: 300% 300%;
+  animation: bgAnimation 12s ease infinite;
+  font-family: "Poppins", sans-serif;
 }
 
-.to-do-list li:hover {
-  transform: translateX(4px);
-  background: #f1f1fb;
+/* ===== Stopwatch Container ===== */
+.stopwatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  text-align: center;
+  transition: transform 0.4s ease;
 }
 
-.text {
-  flex: 1;
-  font-size: 16px;
-  font-weight: 500;
-  color: #444;
+.stopwatch:hover {
+  transform: translateY(-8px);
 }
 
-/* ===== Buttons in Each Task ===== */
-.delete-button,
-.move-button {
-  margin-left: 8px;
-  padding: 6px 12px;
-  font-size: 14px;
+/* ===== Time Display ===== */
+.display {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  font-family: "Roboto Mono", monospace;
+  color: #222;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  animation: fadeIn 0.8s ease;
+}
+
+/* ===== Buttons Container ===== */
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* ===== Buttons ===== */
+.buttons button {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 25px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
-  font-weight: 500;
-  transition: all 0.25s;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Delete button */
-.delete-button {
-  background: #ff6b6b;
+.buttons button:active {
+  transform: scale(0.95) translateY(1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3) inset,
+              0 2px 6px rgba(255, 80, 120, 0.4);
+  filter: brightness(0.9);
+}
+
+/* Start */
+.start-button {
+  background: linear-gradient(135deg, #56ab2f, #a8e063);
   color: white;
 }
-
-.delete-button:hover {
-  background: #ff4b4b;
-  box-shadow: 0 4px 10px rgba(255, 75, 75, 0.5);
+.start-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(86, 171, 47, 0.4);
 }
 
-/* Move buttons */
-.move-button {
-  background: #4ecdc4;
+/* Stop */
+.stop-button {
+  background: linear-gradient(135deg, #ff512f, #dd2476);
   color: white;
 }
+.stop-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(221, 36, 118, 0.4);
+}
 
-.move-button:hover {
-  background: #38b2ac;
-  box-shadow: 0 4px 10px rgba(56, 178, 172, 0.5);
+/* Reset */
+.reset-button {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+}
+.reset-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(54, 209, 220, 0.4);
 }
 
 /* ===== Animations ===== */
+@keyframes bgAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
